@@ -16,7 +16,7 @@
 			</tr>
 			<tr>
 				<td th:text="작성자"></td>
-				<td><input name="writer" type="text" size="10"></td>
+				<td><input readonly name="writer" type="text" size="10" th:value="${session['member'].name}"></td>
 			</tr>
 			<tr>
 				<td th:text="내용">

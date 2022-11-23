@@ -33,14 +33,14 @@
 				<td th:text="${board.cnt}"></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit"
+				<td colspan="2" align="center"><input th:if="${session['member'].name} == ${board.writer}" type="submit"
 					value="게시글 수정"></td>
 			</tr>
 		</table>
 	</form>
 
 	<a th:href="@{/insertBoard}">글등록</a>&nbsp;&nbsp;&nbsp;
-	<a th:href="@{/deleteBoard(seq=${board.seq})}">글삭제</a>&nbsp;&nbsp;&nbsp;
+	<a th:if="${session['member'].role == 'ROLE_ADMIN'} or ${session['member'].name} == ${board.writer}" th:href="@{/deleteBoard(seq=${board.seq})}">글삭제</a>&nbsp;&nbsp;&nbsp;
 	<a th:href="@{/listBoard}">글목록</a>
 </body>
 </html>
