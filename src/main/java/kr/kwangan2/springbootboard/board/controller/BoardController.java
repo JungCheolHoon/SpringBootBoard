@@ -56,9 +56,6 @@ public class BoardController {
 	
 	@GetMapping("/getBoard")
 	public String getBoard(Board board,Model model, @ModelAttribute("member") Member member) {
-		if(member.getId() ==null) {
-			return "redirect:login";
-		}
 		Board findBoard = boardService.getBoard(board);
 		findBoard.setCnt(findBoard.getCnt()+1);
 		boardService.insertBoard(findBoard);
